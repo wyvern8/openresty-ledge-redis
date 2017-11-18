@@ -40,3 +40,12 @@ luac.out
 *.hex
 
 .idea/
+
+lua/*
+!lua/README.md
+
+ssl/*
+!ssl/README.md
+
+redis/data/*
+!redis/data/README.md
