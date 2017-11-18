@@ -1,6 +1,7 @@
 # openresty-ledge-redis
-Docker build for OpenResty:Ledge caching server with redis store.
 [![Docker Build Status](https://img.shields.io/docker/build/wyvern8/openresty-ledge-redis.svg)](https://hub.docker.com/r/wyvern8/openresty-ledge-redis)
+
+Docker build for OpenResty:Ledge caching server with redis store.
 
 #### This repo contains:
   - a docker file to build: https://github.com/pintsized/ledge 
