@@ -15,8 +15,10 @@ services:
       - ./lua/:/usr/local/openresty/nginx/conf/lua
       - ./ssl/:/usr/local/openresty/nginx/conf/ssl
       - ./nginx-conf/nginx-ledge.conf:/usr/local/openresty/nginx/conf/nginx.conf
+
   redis:
     image: redis
+    command: redis-server /usr/local/etc/redis/redis.conf
     restart: always
     dns:
       - 8.8.8.8
