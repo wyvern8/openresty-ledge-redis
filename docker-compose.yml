@@ -1,0 +1,44 @@
+version: '2'
+services:
+  ledge:
+    restart: always
+    image: wyvern8/openresty-ledge-redis:latest
+    dns:
+      - 8.8.8.8
+    links:
+      - redis
+    ports:
+      - "80:80"
+      - "443:443"
+    privileged: true
+    volumes:
+      - ./lua/:/usr/local/openresty/nginx/conf/lua
+      - ./ssl/:/usr/local/openresty/nginx/conf/ssl
+      - ./nginx-conf/nginx-ledge.conf:/usr/local/openresty/nginx/conf/nginx.conf
+  redis:
+    image: redis
+    command: redis-server /usr/local/etc/redis/redis.conf
+    restart: always
+    image: redis
+    dns:
+      - 8.8.8.8
+    ports:
+      - "6379:6379"
+    privileged: true
+    volumes:
+      - ./redis/data:/data
+      - ./redis/redis.conf:/usr/local/etc/redis/redis.conf
+
+  origin:
+    restart: always
+    image: openresty/openresty:trusty
+    dns:
+      - 8.8.8.8
+    ports:
+      - "8099:80"
+      - "8943:443"
+    privileged: true
+    volumes:
+      - ./lua/:/usr/local/openresty/nginx/conf/lua
+      - ./ssl/:/usr/local/openresty/nginx/conf/ssl
+      - ./nginx-conf/nginx-origin.conf:/usr/local/openresty/nginx/conf/nginx.conf

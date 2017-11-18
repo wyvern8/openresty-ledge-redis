@@ -6,3 +6,5 @@ This repo contains:
   - a docker-compose.yml to spin up ledge and redis
   - sample nginx config for ledge connected to docker redis
   - sample redis config to add creds
+
+Please update the redis pw from "changeit" in both redis.conf and nginx-ledge.conf
